@@ -1,5 +1,7 @@
 import { Check, Trash2 } from "lucide-react";
 import React, { useState } from "react";
+import { Input } from "./ui/input";
+import { Button } from "./ui/button";
 
 interface Task {
   text: string;
@@ -32,15 +34,14 @@ const BuggyTodoApp: React.FC = () => {
   return (
     <div style={{ textAlign: "center", marginTop: "20px" }}>
       <h1>ToDo Lsit Manager</h1> {/* Bug 4: Typo in app title */}
-      <input
-        type="text"
+      <Input
         value={task}
         onChange={(e) => setTask(e.target.value)}
         placeholder="Enter a task"
       />
-      <button onClick={addTask} style={{ marginLeft: "10px" }}>
+      <Button onClick={addTask} style={{ marginLeft: "10px" }}>
         Add
-      </button>
+      </Button>
       <ul style={{ marginTop: "20px", listStyleType: "none" }}>
         {tasks.map((t, index) => (
           <li
