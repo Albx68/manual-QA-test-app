@@ -33,16 +33,19 @@ const BuggyTodoApp: React.FC = () => {
 
   return (
     <div style={{ textAlign: "center", marginTop: "20px" }}>
-      <h1>ToDo Lsit Manager</h1> {/* Bug 4: Typo in app title */}
-      <Input
-        value={task}
-        onChange={(e) => setTask(e.target.value)}
-        placeholder="Enter a task"
-      />
-      <Button onClick={addTask} style={{ marginLeft: "10px" }}>
-        Add
-      </Button>
-      <ul style={{ marginTop: "20px", listStyleType: "none" }}>
+      <h1>A bug free todo list manager (I promise)</h1>{" "}
+      {/* Bug 4: Typo in app title */}
+      <div className="flex my-4">
+        <Input
+          value={task}
+          onChange={(e) => setTask(e.target.value)}
+          placeholder="Enter a task"
+        />
+        <Button onClick={addTask} style={{ marginLeft: "10px" }}>
+          Add
+        </Button>
+      </div>
+      <ul className="">
         {tasks.map((t, index) => (
           <li
             key={index}
@@ -50,19 +53,16 @@ const BuggyTodoApp: React.FC = () => {
               textDecoration: t.completed ? "line-through" : "none",
               marginBottom: "10px",
             }}
+            className="flex justify-between border-b border-border py-2 px-4"
           >
-            {t.text}{" "}
-            <Check onClick={() => toggleComplete(index)}>Complete</Check>
-            {/* <button
-              onClick={() => deleteTask(index)}
-              style={{ marginLeft: "5px" }}
-            >
-              Delete
-            </button> */}
-            <Trash2
-              onClick={() => deleteTask(index)}
-              style={{ marginLeft: "5px" }}
-            />
+            {t.text}
+            <div className="flex items-center gap-2">
+              <Check onClick={() => toggleComplete(index)}>Complete</Check>
+              <Trash2
+                onClick={() => deleteTask(index)}
+                style={{ marginLeft: "5px" }}
+              />
+            </div>
           </li>
         ))}
       </ul>
