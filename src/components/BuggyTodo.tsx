@@ -1,4 +1,4 @@
-import { Check, Cross, Trash2, X } from "lucide-react";
+import { Check, Trash2, X } from "lucide-react";
 import React, { useState } from "react";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
@@ -33,7 +33,7 @@ const BuggyTodoApp: React.FC = () => {
 
   return (
     <div
-      className="overflow-hidden"
+      className="overflow-y-hidden"
       style={{ textAlign: "center", marginTop: "20px" }}
     >
       <h1>A bug free todo liist manager (I promise)</h1>{" "}
@@ -63,9 +63,12 @@ const BuggyTodoApp: React.FC = () => {
             }}
             className="flex justify-between border-b border-border py-2 px-4 hover:bg-neutral-900"
           >
-            {t.text}
+            <p className="flex md:hidden">
+              {t.text.length > 70 ? t.text.slice(0, 70) + "..." : t.text}
+            </p>
+            <p className="hidden md:flex">{t.text}</p>
             <div className="flex items-center gap-2">
-              {t.completed ? (
+              {!t.completed ? (
                 <Check
                   onClick={() => toggleComplete(index)}
                   className="text-emerald-500 cursor-pointer"
