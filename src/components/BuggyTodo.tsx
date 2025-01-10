@@ -1,4 +1,4 @@
-import { Check, Trash2 } from "lucide-react";
+import { Check, Cross, Trash2, X } from "lucide-react";
 import React, { useState } from "react";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
@@ -57,8 +57,23 @@ const BuggyTodoApp: React.FC = () => {
           >
             {t.text}
             <div className="flex items-center gap-2">
-              <Check onClick={() => toggleComplete(index)}>Complete</Check>
+              {t.completed ? (
+                <Check
+                  onClick={() => toggleComplete(index)}
+                  className="text-emerald-500 cursor-pointer"
+                >
+                  Complete
+                </Check>
+              ) : (
+                <X
+                  className="cursor-pointer"
+                  onClick={() => toggleComplete(index)}
+                >
+                  Incomplete
+                </X>
+              )}
               <Trash2
+                className="text-red-500 cursor-pointer"
                 onClick={() => deleteTask(index)}
                 style={{ marginLeft: "5px" }}
               />
