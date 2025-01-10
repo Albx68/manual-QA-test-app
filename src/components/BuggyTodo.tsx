@@ -32,20 +32,28 @@ const BuggyTodoApp: React.FC = () => {
   };
 
   return (
-    <div style={{ textAlign: "center", marginTop: "20px" }}>
-      <h1>A bug free todo list manager (I promise)</h1>{" "}
+    <div
+      className="overflow-hidden"
+      style={{ textAlign: "center", marginTop: "20px" }}
+    >
+      <h1>A bug free todo liist manager (I promise)</h1>{" "}
       {/* Bug 4: Typo in app title */}
       <div className="flex my-4">
         <Input
+          className=""
           value={task}
           onChange={(e) => setTask(e.target.value)}
           placeholder="Enter a task"
         />
-        <Button onClick={addTask} style={{ marginLeft: "10px" }}>
+        <Button
+          onClick={addTask}
+          style={{ marginLeft: "10px" }}
+          className="hidden md:flex mt-2"
+        >
           Add
         </Button>
       </div>
-      <ul className="">
+      <ul className="h-[500px]">
         {tasks.map((t, index) => (
           <li
             key={index}
