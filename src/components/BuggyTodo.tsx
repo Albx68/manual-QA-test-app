@@ -1,3 +1,4 @@
+import { Cross, Plus } from "lucide-react";
 import React, { useState } from "react";
 
 interface Task {
@@ -37,9 +38,10 @@ const BuggyTodoApp: React.FC = () => {
         onChange={(e) => setTask(e.target.value)}
         placeholder="Enter a task"
       />
-      <button onClick={addTask} style={{ marginLeft: "10px" }}>
+      {/* <button onClick={addTask} style={{ marginLeft: "10px" }}>
         Add
-      </button>
+          </button> */}
+      <Plus onClick={addTask} style={{ marginLeft: "10px" }} />
       <ul style={{ marginTop: "20px", listStyleType: "none" }}>
         {tasks.map((t, index) => (
           <li
@@ -51,12 +53,16 @@ const BuggyTodoApp: React.FC = () => {
           >
             {t.text}{" "}
             <button onClick={() => toggleComplete(index)}>Complete</button>
-            <button
+            {/* <button
               onClick={() => deleteTask(index)}
               style={{ marginLeft: "5px" }}
             >
               Delete
-            </button>
+            </button> */}
+            <Cross
+              onClick={() => deleteTask(index)}
+              style={{ marginLeft: "5px" }}
+            />
           </li>
         ))}
       </ul>
