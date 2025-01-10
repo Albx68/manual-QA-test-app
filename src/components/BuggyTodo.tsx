@@ -59,9 +59,9 @@ const BuggyTodoApp: React.FC = () => {
             key={index}
             style={{
               textDecoration: t.completed ? "line-through" : "none",
-              marginBottom: "10px",
+              //   marginBottom: "10px",
             }}
-            className="flex justify-between border-b border-border py-2 px-4"
+            className="flex justify-between border-b border-border py-2 px-4 hover:bg-neutral-900"
           >
             {t.text}
             <div className="flex items-center gap-2">
